@@ -1,24 +1,29 @@
 package Graph;
-import Graph.Graph;
 import java.util.*;
 
 public class AdjacencyMatrix<T> implements Graph<T>
 {
     int [][] matrix;
     HashMap<T, Integer> valueIndex;
+    HashMap<Integer, T> indexValue;
 
     public AdjacencyMatrix(int n)
     {
         this.matrix=new int[n][n];
         valueIndex=new HashMap<>();
+        indexValue=new HashMap<>();
     }
 
     public AdjacencyMatrix(Set<T> nodeValues)
     {
-        int n=nodeValues.size();
-        this.matrix=new int [n][n];
-        int i=0;
-        for(T val: nodeValues) this.valueIndex.put(val, i++);
+        this(nodeValues.size());
+        int j=0;
+        for(T val: nodeValues) 
+        {
+            this.valueIndex.put(val, j);
+            this.indexValue.put(j, val);
+            j++;
+        }
     }
 
     @Override
@@ -26,11 +31,13 @@ public class AdjacencyMatrix<T> implements Graph<T>
     {
         if(valueIndex.containsKey(val)) throw new Exception("Node already Exists");
         valueIndex.put(val, valueIndex.size());
+        indexValue.put(indexValue.size(), val);
     }
 
     @Override
     public void addDirectEdge(T nodeFrom, T nodeTo, int weight) throws Exception
     {
+        if(weight==0) throw new Exception("cannot add edge with weight 0");
         int row=0, col=0;
         try
         {
@@ -70,6 +77,7 @@ public class AdjacencyMatrix<T> implements Graph<T>
     @Override
     public int getWeight(T nodeFrom, T nodeTo) throws Exception
     {
+        if(!hasDirectEdge(nodeFrom, nodeTo)) throw new Exception("no such edge exist");
         int row=0, col=0;
         try
         {
@@ -84,9 +92,24 @@ public class AdjacencyMatrix<T> implements Graph<T>
     }
 
     @Override
+    public void setWeight(T nodeFrom, T nodeTo, int weight) throws Exception
+    {
+        if(!hasDirectEdge(nodeFrom, nodeTo)) throw new Exception("no such edge exist");
+        addDirectEdge(nodeFrom, nodeTo, weight);
+    }
+
+    @Override
+    public List<T> getNeighboursOf(T node)
+    {
+        List<T> neighbours=new ArrayList<>();
+        for(int i=0; i<valueIndex.size(); i++)
+            if(matrix[valueIndex.get(node)][i]>0) neighbours.add(indexValue.get(i));
+        return neighbours;
+    }
+
+    @Override
     public String toString() {
         StringBuilder res=new StringBuilder("");
-        int index=0;
         for(int i=0; i<valueIndex.size(); i++)
         {
             for(int j=0; j<valueIndex.size(); j++)
@@ -96,6 +119,11 @@ public class AdjacencyMatrix<T> implements Graph<T>
             res.append("\n");
         }
         return res.toString();
+    }
+
+    @Override
+    public boolean hasNode(T val) {
+        return valueIndex.containsKey(val);
     }
 
 }

@@ -58,15 +58,16 @@ public class AdjacencyList<T> implements Graph<T> {
         return 0;
     }
     
-    public boolean setWeight(T nodeFrom, T nodeTo, int weight) throws Exception {
+    @Override
+    public void setWeight(T nodeFrom, T nodeTo, int weight) throws Exception {
         if(!fromToWeight.containsKey(nodeFrom)) throw new Exception("Node Does Not Exist");
         List<Edge<T>> edges=fromToWeight.get(nodeFrom);
-        for(Edge<T> edge: edges) if(edge.nodeValue==nodeFrom)
-        {
-            edge.weight=weight;
-            return true;
-        }
-        return false;
+        for(Edge<T> edge: edges) if(edge.nodeValue==nodeFrom) edge.weight=weight;
+    }
+
+    public List<Edge<T>> getEdgesFrom(T node)
+    {
+        return fromToWeight.get(node);
     }
 
     @Override
@@ -78,5 +79,19 @@ public class AdjacencyList<T> implements Graph<T> {
             res.append("\n");
         }
         return res.toString();
+    }
+
+    @Override
+    public List<T> getNeighboursOf(T node) throws Exception {
+        List<Edge<T>> edges=getEdgesFrom(node);
+        List<T> neighbours=new ArrayList<>();
+        for(Edge<T>edge: edges)
+            neighbours.add(edge.nodeValue);
+        return neighbours;
+    }
+
+    @Override
+    public boolean hasNode(T val) {
+        return fromToWeight.containsKey(val);
     }
 }

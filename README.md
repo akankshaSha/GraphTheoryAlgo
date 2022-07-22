@@ -68,3 +68,8 @@ other definations:
 
 before begining any problem, ask yourself:
 ![questions](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/stating%20a%20problem.jpg?raw=true)
+
+## DFS
+
+a dfs plunges depth first search into a graph without regard for which edge it takes next until it cannot go any further at which point it backtracks and continues  
+[!dfs](https://www3.cs.stonybrook.edu/~skiena/combinatorica/animations/anim/dfs.gif)

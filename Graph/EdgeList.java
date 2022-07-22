@@ -36,7 +36,7 @@ public class EdgeList<T> {
 
     public boolean hasDirectEdge(T from, T to)
     {
-        for(Edge edge: this.edges)
+        for(Edge<T> edge: this.edges)
         {
             if(edge.from==from && edge.to==to) return true;
         }
