@@ -40,34 +40,40 @@ other definations:
 
 - **Adjacency Matrix**: m[i][j] represents the edge weight of going from node i to j
 ![adj mat](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/adjecency%20matrix.jpg?raw=true) 
-|Pros |Cons
-|--- |---
-|Splace Efficient for representing dense graphs |Requires Θ(V²) space
-|Edge Weight lookup is O(1) |Iterateing over all edges take Θ(V²) time
-|Simplest Graph representation |  
+|                   **Pros**                   |                  **Cons**                 |
+|:--------------------------------------------:|:-----------------------------------------:|
+| Space efficient for representing dense graph | Requires Θ(V²) space                      |
+| Edge Weight Look up is O(1)                  | Iterateing over all edges take Θ(V²) time |
+| Very Simple Structure                        |                                           |
 
 - **Adjecency List**: represent a grpah as a map from nodes to list of edges
 ![adj lst](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/adjecencey%20list.jpg?raw=true)
-|Pros |Cons
-|--- |---
-|Space efficient for representing sparse graph | Less space efficient for dense graphs
-|Iterating over all edges is efficient | Edge weight look up os O(E)
-|  | Slightly more complex grph representation
+|                    **Pros**                   |                  **Cons**                 |
+|:---------------------------------------------:|:-----------------------------------------:|
+| Space efficient for representing sparse graph | Less space efficient for dense graphs     |
+| Iterating over all edges is efficient         | Edge weight look up os O(E)               |
+|                                               | Slightly more complex grph representation |
 
 - **Edge List**: unordered list of edges (in form of triplets (u, v, w))
 ![edge lst](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/Edge%20List.jpg?raw=true)  
 *Note: this form of representation is seldomply used because of its lack of structure. However it is conceptually simple and practical in a handful of algorithms*  
 
-|Pros |Cons
-|--- |---
-|Space efficient for representing sparse graph | Less space efficient for dense graphs
-|Iterating over all edges is efficient | Edge weight look up os O(E)
-|Very Simple Structure |  
+|                    **Pros**                   |                **Cons**               |
+|:---------------------------------------------:|:-------------------------------------:|
+| Space efficient for representing sparse graph | Less space efficient for dense graphs |
+| Iterating over all edges is efficient         | Edge weight look up os O(E)           |
+| Very Simple Structure                         |                                       |
 
 ## Common Graph Theory Problems
 
 before begining any problem, ask yourself:
 ![questions](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/stating%20a%20problem.jpg?raw=true)
+
+## Guilde to Write Test Cases
+
+1. open graphInputs.griff file [!griffin](https://c.tenor.com/abslSZsXIa8AAAAC/bh187-family-guy.gif)
+2. add test case as: '''logic: [(from,to,weigt),(from,to,weight),...]'''
+3. use \# for comments
 
 ## DFS
 

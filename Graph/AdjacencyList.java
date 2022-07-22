@@ -20,7 +20,24 @@ class Edge<T>
 }
 
 public class AdjacencyList<T> implements Graph<T> {
-    HashMap<T, List<Edge<T>>> fromToWeight=new HashMap<>();
+    HashMap<T, List<Edge<T>>> fromToWeight;
+
+    public AdjacencyList()
+    {
+        fromToWeight=new HashMap<>();
+    }
+
+    public AdjacencyList(EdgeList<T> edgeList) throws Exception
+    {
+        this();
+        List<DEdge<T>> edges=edgeList.getEdgeList();
+        for(DEdge <T> edge: edges)
+        {
+            if(!this.hasNode(edge.from))this.addNode(edge.from);
+            if(!this.hasNode(edge.to))this.addNode(edge.to);
+            this.addDirectEdge(edge.from, edge.to);
+        }
+    }
 
     @Override
     public void addNode(T val) throws Exception {

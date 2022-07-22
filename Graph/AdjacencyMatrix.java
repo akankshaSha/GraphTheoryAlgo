@@ -26,6 +26,18 @@ public class AdjacencyMatrix<T> implements Graph<T>
         }
     }
 
+    AdjacencyMatrix(EdgeList<T> edgeList, int n) throws Exception
+    {
+        this(n);
+        List<DEdge<T>> edges=edgeList.getEdgeList();
+        for(DEdge <T> edge: edges)
+        {
+            if(!this.hasNode(edge.from))this.addNode(edge.from);
+            if(!this.hasNode(edge.to))this.addNode(edge.to);
+            this.addDirectEdge(edge.from, edge.to);
+        }
+    }
+
     @Override
     public void addNode(T val) throws Exception
     {
