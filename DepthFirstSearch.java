@@ -17,10 +17,24 @@ public class DepthFirstSearch
             visited.add(node);
             res.add(node);
             List<Integer> neighbours=g.getNeighboursOf(node);
-            for(int neightbour: neighbours) 
+            for(int neighbour: neighbours) 
             {
-                if(!visited.contains(neightbour)) nodes.push(neightbour);
+                if(!visited.contains(neighbour)) nodes.push(neighbour);
             }
+        }
+        return res;
+    }
+
+    static List<Integer> DFT(Graph<Integer> g, int start, HashSet<Integer> visited) throws Exception
+    {
+        List<Integer> res=new ArrayList<>();
+        if(!g.hasNode(start) || visited.contains(start)) return res;
+        visited.add(start);
+        List<Integer> neighbours=g.getNeighboursOf(start);
+        res.add(start);
+        for(int neighbour: neighbours) 
+        {
+            res.addAll(DFT(g, neighbour, visited));
         }
         return res;
     }
@@ -38,5 +52,6 @@ public class DepthFirstSearch
         g.addDirectEdge(4, 5);
         g.addDirectEdge(5, 3);
         System.out.println(DFT(g, 1));
+        System.out.println(DFT(g, 1, new HashSet<>()));
     }
 }
