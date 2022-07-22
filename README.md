@@ -39,7 +39,8 @@ other definations:
 ## Representing Graphs
 
 - **Adjacency Matrix**: m[i][j] represents the edge weight of going from node i to j
-![adj mat](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/adjecency%20matrix.jpg?raw=true) 
+![adj mat](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/adjecency%20matrix.jpg?raw=true)  
+
 |                   **Pros**                   |                  **Cons**                 |
 |:--------------------------------------------:|:-----------------------------------------:|
 | Space efficient for representing dense graph | Requires Θ(V²) space                      |
@@ -47,7 +48,8 @@ other definations:
 | Very Simple Structure                        |                                           |
 
 - **Adjecency List**: represent a grpah as a map from nodes to list of edges
-![adj lst](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/adjecencey%20list.jpg?raw=true)
+![adj lst](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/adjecencey%20list.jpg?raw=true)  
+
 |                    **Pros**                   |                  **Cons**                 |
 |:---------------------------------------------:|:-----------------------------------------:|
 | Space efficient for representing sparse graph | Less space efficient for dense graphs     |
@@ -71,11 +73,12 @@ before begining any problem, ask yourself:
 
 ## Guilde to Write Test Cases
 
-1. open graphInputs.griff file [!griffin](https://c.tenor.com/abslSZsXIa8AAAAC/bh187-family-guy.gif)
-2. add test case as: '''logic: [(from,to,weigt),(from,to,weight),...]'''
+1. open graphInputs.griff file  
+![griffin](https://c.tenor.com/abslSZsXIa8AAAAC/bh187-family-guy.gif)
+2. add test case as: `[(from,to,weigt),(from,to,weight),...]`
 3. use \# for comments
 
 ## DFS
 
 a dfs plunges depth first search into a graph without regard for which edge it takes next until it cannot go any further at which point it backtracks and continues  
-[!dfs](https://www3.cs.stonybrook.edu/~skiena/combinatorica/animations/anim/dfs.gif)
+![dfs](https://www3.cs.stonybrook.edu/~skiena/combinatorica/animations/anim/dfs.gif)
