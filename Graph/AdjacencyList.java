@@ -19,7 +19,7 @@ class Edge<T>
     }
 }
 
-public class AdjacencyList<T> implements Graph<T> {
+public class AdjacencyList<T> implements Graph<T>, UndirectedGraph<T> {
     HashMap<T, List<Edge<T>>> fromToWeight;
 
     public AdjacencyList()
@@ -35,7 +35,7 @@ public class AdjacencyList<T> implements Graph<T> {
         {
             if(!this.hasNode(edge.from))this.addNode(edge.from);
             if(!this.hasNode(edge.to))this.addNode(edge.to);
-            this.addDirectEdge(edge.from, edge.to);
+            this.addDirectEdge(edge.from, edge.to, edge.weight);
         }
     }
 
@@ -51,7 +51,14 @@ public class AdjacencyList<T> implements Graph<T> {
         if(!fromToWeight.containsKey(nodeFrom)) throw new Exception("Node Does Not Exist");
         List<Edge<T>> edges=fromToWeight.get(nodeFrom);
         edges.add(new Edge<T>(nodeTo, weight));
-        fromToWeight.put(nodeFrom, edges);        
+        fromToWeight.put(nodeFrom, edges);   
+        if(this instanceof UndirectedGraph)
+        {
+            if(!fromToWeight.containsKey(nodeTo)) throw new Exception("Node Does Not Exist");
+            edges=fromToWeight.get(nodeTo);
+            edges.add(new Edge<T>(nodeFrom, weight));
+            fromToWeight.put(nodeTo, edges);  
+        }    
     }
 
     @Override

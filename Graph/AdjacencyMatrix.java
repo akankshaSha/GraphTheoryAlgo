@@ -1,7 +1,7 @@
 package Graph;
 import java.util.*;
 
-public class AdjacencyMatrix<T> implements Graph<T>
+public class AdjacencyMatrix<T> implements Graph<T>, UndirectedGraph<T>
 {
     int [][] matrix;
     HashMap<T, Integer> valueIndex;
@@ -26,7 +26,7 @@ public class AdjacencyMatrix<T> implements Graph<T>
         }
     }
 
-    AdjacencyMatrix(EdgeList<T> edgeList, int n) throws Exception
+    public AdjacencyMatrix(EdgeList<T> edgeList, int n) throws Exception
     {
         this(n);
         List<DEdge<T>> edges=edgeList.getEdgeList();
@@ -34,7 +34,7 @@ public class AdjacencyMatrix<T> implements Graph<T>
         {
             if(!this.hasNode(edge.from))this.addNode(edge.from);
             if(!this.hasNode(edge.to))this.addNode(edge.to);
-            this.addDirectEdge(edge.from, edge.to);
+            this.addDirectEdge(edge.from, edge.to, edge.weight);
         }
     }
 
@@ -61,6 +61,7 @@ public class AdjacencyMatrix<T> implements Graph<T>
             throw new Exception("node does not exist");
         }
         matrix[row][col]=weight;
+        if(this instanceof UndirectedGraph) matrix[col][row]=weight;
     }
 
     @Override
