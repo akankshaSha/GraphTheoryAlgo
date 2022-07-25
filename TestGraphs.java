@@ -1,5 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.*;
 import Graph.*;
 
@@ -23,6 +22,7 @@ public class TestGraphs {
             }
             tests.add(graph);
         }
+        sc.close();
         return tests;
     }
 }
