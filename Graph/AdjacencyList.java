@@ -78,7 +78,7 @@ public class AdjacencyList<T> implements Graph<T>, UndirectedGraph<T> {
     public int getWeight(T nodeFrom, T nodeTo) throws Exception {
         if(!fromToWeight.containsKey(nodeFrom)) throw new Exception("Node Does Not Exist");
         List<Edge<T>> edges=fromToWeight.get(nodeFrom);
-        for(Edge<T> edge: edges) if(edge.nodeValue==nodeFrom) return edge.weight;
+        for(Edge<T> edge: edges) if(edge.nodeValue==nodeTo) return edge.weight;
         return 0;
     }
     
@@ -86,7 +86,12 @@ public class AdjacencyList<T> implements Graph<T>, UndirectedGraph<T> {
     public void setWeight(T nodeFrom, T nodeTo, int weight) throws Exception {
         if(!fromToWeight.containsKey(nodeFrom)) throw new Exception("Node Does Not Exist");
         List<Edge<T>> edges=fromToWeight.get(nodeFrom);
+        for(Edge<T> edge: edges) if(edge.nodeValue==nodeTo) edge.weight=weight;
+        if (this instanceof UndirectedGraph)
+        {
+            edges=fromToWeight.get(nodeTo);
         for(Edge<T> edge: edges) if(edge.nodeValue==nodeFrom) edge.weight=weight;
+        }
     }
 
     public List<Edge<T>> getEdgesFrom(T node)
