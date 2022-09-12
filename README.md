@@ -58,7 +58,7 @@ other definations:
 
 - **Edge List**: unordered list of edges (in form of triplets (u, v, w))
 ![edge lst](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/Edge%20List.jpg?raw=true)  
-*Note: this form of representation is seldomply used because of its lack of structure. However it is conceptually simple and practical in a handful of algorithms*  
+*Note: this form of representation is seldomly used because of its lack of structure. However it is conceptually simple and practical in a handful of algorithms*  
 
 |                    **Pros**                   |                **Cons**               |
 |:---------------------------------------------:|:-------------------------------------:|
