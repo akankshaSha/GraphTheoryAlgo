@@ -71,7 +71,7 @@ other definations:
 before begining any problem, ask yourself:
 ![questions](https://github.com/akankshaSha/GraphTheoryAlgo/blob/main/Images/stating%20a%20problem.jpg?raw=true)
 
-## Guilde to Write Test Cases
+## Guide to Write Test Cases
 
 1. open graphInputs.griff file  
 ![griffin](https://c.tenor.com/abslSZsXIa8AAAAC/bh187-family-guy.gif)
